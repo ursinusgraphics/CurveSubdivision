@@ -1,0 +1,55 @@
+<!--Programmer: Chris Tralie!-->
+<!--Purpose: Front end point chooser for 2D forward kinematics !-->
+<html>
+<head>
+<script src = "gl-matrix-min.js"></script>
+</head>
+<body>
+
+<h2>Curve Subdivision</h2>
+
+<h3>Directions:</h3>
+<p>
+Choose the coordinates of a curve by left clicking.  Pop off a point by right clicking
+</p>
+
+<p>
+<button type = "button" onclick = "subdivideTopological()">Subdivide Topological</button>
+</p>
+
+<p>
+  <button type = "button" onclick = "subdivideLinear()">Subdivide Linear</button>
+</p>
+
+<p>
+  <button type = "button" onclick = "subdivideWeighted()">Subdivide Weighted</button>
+
+  <label for="kernel">Kernel</label>
+
+  <textarea id="kernel" name="kernel" rows="1" cols="50">
+  1, 4, 6, 4, 1
+  </textarea> 
+
+</p>
+
+
+<canvas id = "segcanvas" width = "600" height = "600" style="border:1px solid #000000;">
+</canvas>
+
+<script src="subdivision.js"></script>
+<script>
+    let curve = new LoopCurve();
+    function subdivideTopological() {
+      curve.subdivideTopological();
+    }
+    function subdivideLinear() {
+      curve.subdivideLinear();
+    }
+    function subdivideWeighted() {
+      curve.subdivideWeighted();
+    }
+</script>
+
+
+</body>
+</html>
