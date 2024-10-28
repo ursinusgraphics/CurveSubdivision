@@ -35,32 +35,6 @@ function getSubdividedWeighted(Ps, kernel) {
     return PsNew;
 }
 
-
-/**
- * Subdivide points on a curve
- * @param {list of vec3} Ps Points on the curve
- */
-function getSubdivided(Ps) {
-    let PsNew = [];
-    let N = Ps.length;
-    let w = 0.24;
-    for (let i = 0; i < Ps.length; i++) {
-        PsNew.push(Ps[i]);
-        let p = glMatrix.vec3.create();
-        
-        let p1 = glMatrix.vec3.create();
-        glMatrix.vec3.scaleAndAdd(p1, p1, Ps[i], 0.5);
-        glMatrix.vec3.scaleAndAdd(p1, p1, Ps[(i+1)%N], 0.5);
-        let p2 = glMatrix.vec3.create();
-        glMatrix.vec3.scaleAndAdd(p2, p2, Ps[(i+N-1)%N], -0.5);
-        glMatrix.vec3.scaleAndAdd(p2, p2, Ps[(i+2)%N], -0.5);
-        glMatrix.vec3.scaleAndAdd(p2, p1, p2, 1);
-        glMatrix.vec3.scaleAndAdd(p, p1, p2, 2*w);
-        PsNew.push(p);
-    }
-    return PsNew;
-}
-
 /**
  * Class for selecting a discrete loop in 2D
  */
