@@ -1,3 +1,5 @@
+const vec3 = glMatrix.vec3;
+
 /**
  * Perform a topological subdivision
  * @param {list of N vec3} Ps initial points on the loop 
